@@ -1,2 +1,1 @@
-# My Professional Memory
-Information that I don't want to lose track of
+> **NOT CONFIDENTIAL** - Just professionally personal
