@@ -1,0 +1,16 @@
+[user]
+	name = David May
+	email = David.May@efi.com
+[core]
+	autocrlf = input
+	excludesfile = /Users/davidmay/.gitignore_global
+[include]
+	path = ~/.bashlibs/gitspaces/userfiles/gitconfig
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/davidmay/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/davidmay/.stCommitMsg
