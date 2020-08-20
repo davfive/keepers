@@ -14,7 +14,7 @@ const loget = (o, dotlist, dflt) => {
   if (dotlist == null || dotlist === '') return o == null ? dflt : o
   try {
     return dotlist.split('.').reduce((last, key) => {
-      if (typeof last === 'function') return dflt
+      if (typeof last !== 'object') return dflt
       const value = (last||{})[key]
       return value === undefined ? dflt : value
     }, o)
