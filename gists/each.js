@@ -18,3 +18,4 @@ const each2 = (array, fn) => Promise.resolve()
 
 each1([1, 2, 3], console.log)
     .then(() => each2([4, 5, 6], console.log))
+

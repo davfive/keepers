@@ -33,3 +33,4 @@ mapSeriesAsync(distances, howFarCanIJumpAsync, {stop: false})
     .then(() => mapSeriesAsync(distances, howFarCanIJumpAsync, {stop: true}))
     .then(report)
     .catch(e => console.log(`${e}`))
+
