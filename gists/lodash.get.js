@@ -9,18 +9,12 @@
  *   I'm pretty sure I'm missing failing tests, but I can't think of any more.
  *   Let me know if you find any, happy to update it.
 */
-
-const loget = (o, dotlist, dflt) => {
-  if (dotlist == null || dotlist === '') return o == null ? dflt : o
-  try {
-    return dotlist.split('.').reduce((last, key) => {
-      if (typeof last !== 'object') return dflt
-      const value = (last||{})[key]
-      return value === undefined ? dflt : value
-    }, o)
-  } catch (e) {
-    return undefined
-  }
+// https://gist.github.com/harish2704/d0ee530e6ee75bad6fd30c98e5ad9dab#gistcomment-3148552
+function logget (object, path, value) {
+  const pathArray = Array.isArray(path) ? path : path.split('.').filter(key => key);
+  const pathArrayFlat = pathArray.flatMap(part => typeof part === 'string' ? part.split('.') : part);
+  const checkValue = pathArrayFlat.reduce((obj, key) => obj && obj[key], object);
+  return  checkValue === undefined ? value : checkValue
 }
 
 // Test the darn thing
@@ -38,8 +32,8 @@ const tests = [
       {get: '', expect: {type: 'undefined'}},
       {get: 'a', dflt: 1, expect: {type: 'number', value: 1}},
       {get: 'a', expect: {type: 'undefined'}},
-      {get: 'a.2', dflt: 1, expect: {type: 'number', value: 1}},
-      {get: 'a.2', expect: {type: 'undefined'}},
+      {get: ['a', 2], dflt: 1, expect: {type: 'number', value: 1}},
+      {get: ['a', 2], expect: {type: 'undefined'}},
     ]
   },
   {
